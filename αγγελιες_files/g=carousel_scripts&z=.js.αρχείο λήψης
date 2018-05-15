@@ -1,0 +1,52 @@
+(function($){$.extend({metadata:{defaults:{type:'class',name:'metadata',cre:/({.*})/,single:'metadata'},setType:function(type,name){this.defaults.type=type;this.defaults.name=name;},get:function(elem,opts){var settings=$.extend({},this.defaults,opts);if(!settings.single.length)settings.single='metadata';var data=$.data(elem,settings.single);if(data)return data;data="{}";if(settings.type=="class"){var m=settings.cre.exec(elem.className);if(m)
+data=m[1];}else if(settings.type=="elem"){if(!elem.getElementsByTagName)
+return undefined;var e=elem.getElementsByTagName(settings.name);if(e.length)
+data=$.trim(e[0].innerHTML);}else if(elem.getAttribute!=undefined){var attr=elem.getAttribute(settings.name);if(attr)
+data=attr;}
+if(data.indexOf('{')<0)
+data="{"+data+"}";data=eval("("+data+")");$.data(elem,settings.single,data);return data;}}});$.fn.metadata=function(opts){return $.metadata.get(this[0],opts);};})(jQuery);;(function($){var SGCarousel=function(element,newOptions){var defaults={start:1,moveItems:1,axis:'x',controls:true,interval:false,intervalTime:3000,rewind:false,animation:true,duration:1000,callback:null,nextButton:".next:first",prevButton:".prev:first",content:".content:first",viewport:".viewport:first",pager:".pager:first",continuously:true,itemWidth:null,itemHeight:"180px",width:null,height:null,displayItems:3,moveOnLastItem:true,highlightItemClass:"",numberOfIterations:null};var options=$.extend(defaults,newOptions);var oCarousel=$(element);var oViewport=$(options.viewport,oCarousel);var oContent=$(options.content,oCarousel);var oPages=oContent.children();var oBtnNext=$(options.nextButton,oCarousel);var oBtnPrev=$(options.prevButton,oCarousel);var oPager=$(options.pager,oCarousel);var iPageSize=0,iItems=0,iSteps=0,iCurrent=0,iCurrentItem=0,iViewport=0,iLastItem=0,iSlideSize=0,oTimer=null,bPause=false,bForward=true,bAxis=(options.axis=='x'),iOtherPageSize=0;function initialize(carousel){var data=oCarousel.metadata();if(data)
+options=$.extend(options,data);if(options.carouselClass)
+oCarousel.addClass(options.carouselClass);if(options.contentClass)
+$(".content",oCarousel).addClass(options.contentClass);if(options.itemClass)
+$(".content li",oCarousel).addClass(options.itemClass);if(options.viewportClass)
+oViewport.addClass(options.viewportClass);if(options.buttonClass){oBtnNext.addClass(options.carouselClass);oBtnPrev.addClass(options.carouselClass);}
+if(bAxis){if(options.itemWidth&&options.itemWidth!=null){iPageSize=options.itemWidth;$(".sgCarouselItem",oCarousel).width(iPageSize);}
+else
+iPageSize=$(oPages[0]).outerWidth(true);if(options.itemHeight&&options.itemHeight!=null)
+iOtherPageSize=options.itemHeight;else
+iOtherPageSize=$(oPages[0]).outerHeight(true);$(".sgCarouselItem, .sgCarouselSlide, .sgCarouselViewport",oCarousel).height(iOtherPageSize);}
+else{if(options.itemHeight&&options.itemHeight!=null){iPageSize=options.itemHeight;$(".sgCarouselItem",oCarousel).height(iPageSize);}
+else
+iPageSize=$(oPages[0]).outerHeight(true);if(options.itemWidth&&options.itemWidth!=null)
+iOtherPageSize=options.itemWidth;else
+iOtherPageSize=$(oPages[0]).outerWidth(true);$(".sgCarouselItem, .sgCarouselSlide, .sgCarouselViewport",oCarousel).width(iOtherPageSize);}
+iViewport=iPageSize*options.displayItems;iSlideSize=iPageSize*options.moveItems;iItems=oPages.length;if(bAxis)
+oViewport.width(iViewport);else
+oViewport.height(iViewport);if(options.width)
+oCarousel.width(options.width);if(options.height)
+oCarousel.height(options.height);var iLeftover=Math.ceil((iViewport/iSlideSize)-1);iSteps=Math.max(1,Math.ceil(oPages.length/options.moveItems)-iLeftover);iCurrentItem=iCurrent=Math.min(iSteps,Math.max(1,options.start))-2;oContent.css(bAxis?'width':'height',(iPageSize*oPages.length));if(iItems<options.displayItems)
+{var position=Math.round((options.displayItems-iItems)*iPageSize/2);oContent.css(bAxis?'left':'top',position);}
+else
+{move(1);setEvents();}}
+function moveLeft(){move(-1);return false;}
+function moveRight(){move(1);return false;}
+function setEvents(){if(options.controls){oBtnPrev.click(moveLeft);oBtnNext.click(moveRight);}
+if(options.interval){oCarousel.hover(function(){clearTimeout(oTimer);bPause=true},function(){bPause=false;setTimer();});}
+if(options.pager&&oPager.length>0){$('a',oPager).click(setPager);}}
+function setButtons(){if(options.controls){oBtnPrev.toggleClass('hidden',!(iCurrent>0));oBtnNext.toggleClass('hidden',!(iCurrent+1<iSteps));}
+if(options.pager){var oNumbers=$('.pagenum',oPager);oNumbers.removeClass('active');$(oNumbers[iCurrent]).addClass('active');}}
+function setPager(oEvent){if($(this).hasClass('pagenum')){iCurrent=parseInt(this.rel)-1;move(1);}
+return false;}
+function setTimer(){if(options.interval&&!bPause){clearTimeout(oTimer);oTimer=setTimeout(function(){if(!options.rewind&&(iCurrent+1==iSteps)){if(options.moveOnLastItem&&(iCurrentItem+1==iItems)){iCurrent=iCurrentItem=-1;}}
+bForward=iCurrent+1==iSteps?false:iCurrent==0?true:bForward;move((options.rewind?(bForward?1:-1):1));},options.intervalTime);}}
+function move(iDirection){if(iCurrentItem==0&&options.numberOfIterations==0){return false;}
+var bMove=false;var bMoveFocus=false;iLastItem=iCurrentItem;if(options.continuously&&(iCurrent+iDirection==iSteps)){if(options.moveOnLastItem){if(iCurrentItem+iDirection==iItems){bMove=true;iCurrent=0;iCurrentItem=0;}}}
+else{if(iCurrent+iDirection>-1&&iCurrent+iDirection<iSteps){bMove=true;iCurrent+=iDirection;}}
+if(iCurrentItem==0&&options.numberOfIterations!=null){options.numberOfIterations--;}
+if((iCurrentItem+iDirection<iItems+1)&&(iCurrentItem+iDirection>=0)){bMoveFocus=true;if(bMove)
+iCurrentItem+=iDirection;else
+iCurrentItem++;}
+if(bMove||bMoveFocus){var oPosition={};oPosition[bAxis?'left':'top']=-(iCurrent*iSlideSize);oContent.animate(oPosition,{queue:false,duration:options.animation?options.duration:0,complete:function(){if(options.highlightItemClass){$(oPages[iLastItem]).removeClass(options.highlightItemClass);$(oPages[iCurrentItem]).addClass(options.highlightItemClass)}
+if(typeof options.callback=='function')
+options.callback.call(this,oPages[iCurrentItem],iCurrentItem);}});setButtons();setTimer();}}
+initialize($(this));};$.fn.sgCarousel=function(options){return this.each(function(){var Carousel=new SGCarousel(this,options);});};})(jQuery);
