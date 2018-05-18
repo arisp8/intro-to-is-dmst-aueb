@@ -1,0 +1,73 @@
+/**
+ This css file contains custom rules implemented by the DMST team
+ consisting of members:
+ Alexandridis Marios
+ Bushi Sidorella
+ Pattakos Aris
+*/
+.input-holder {
+	width: 97%;
+	margin: 5px auto 0;
+	border-radius: 3px;
+	overflow: hidden;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	padding: 5px;
+}
+.input-holder input {
+	padding: 5px;
+	width: 97%;
+}
+.margin-top-small {
+	margin-top: 10px;
+}
+#areaSelection .distance-from .small-input {
+	width: 20%;
+	border: 1px solid #ddd !important;
+	padding: 5px;
+	display: inline-block;
+	border-radius: 3px;
+	height: 36px;
+}
+.close-to.margin-bottom {
+	margin-bottom: 2em;
+}
+.new-feature {
+	color: #2DA3DE;
+}
+.end-indicator, .start-indicator {
+	background: #2DA3DE;
+	height: 2px;
+	width: 100%;
+	position: relative;
+}
+.start-indicator {
+	margin-bottom: 1em;
+}
+.end-indicator {
+	margin-top: 1em;
+}
+.start-indicator::after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: 0;
+	transform: translateX(-50%);
+	width: 0; 
+	height: 0; 
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-top: 10px solid #2DA3DE;
+}
+.end-indicator::after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	transform: translateX(-50%);
+	width: 0; 
+	height: 0; 
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #2DA3DE;
+}

@@ -1010,19 +1010,10 @@
                                                                                                                         <a rel="nofollow" href="#" class="tokenizerClear hidden" id="clear_areaSelection_content">Καθαρισμός</a>
                                                                                                                     </div>
                                                                                                                 </div>
-                                                                                                            </div>
-                                                                                                            <div class="tableRow">
-                                                                                                                <div class="tableCell   text left ">
-                                                                                                                    <label class="text bold block  ">Ελάχιστος πληθυσμός</label>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                            <div  class="zombieHolder ">
-                                                                                                                <div class="input-holder">
-                                                                                                                    <input type="text" class="" id="minPopulation" name="minPopulation" value=""/>
-                                                                                                                </div>
-                                                                                                            </div>
+                                                                                                            </div>                                                                                                           
                                                                                                             <div class="clear"></div>
                                                                                                             
+
                                                                                                             <div id= "nearBySelection" class="border-bottom padding-bottom-large margin-bottom">
                                                                                                                 <div id="nearbyAreas" class="margin-top hide-phone">
                                                                                                                     <p class="text small ">Βρες τις <a href="https://www.spitogatos.gr/#" class="sgTooltipBottomExternal text color cyan" id="nearbySiblings">πλησιέστερες περιοχές</a></p>
@@ -1035,8 +1026,84 @@
                                                                                                                             </div>
                                                                                                                         </div>
                                                                                                                         </div><!-- nearbyAreas -->              </div>
+                                                                                                                        <!-- Προσθήκες εργασίας -->
+                                                                                                                        <div class="start-indicator"></div>
+                                                                                                                        <div class="tableRow">
+                                                                                                                            <div class="tableCell   text left ">
+                                                                                                                                <label class="text bold block  ">Ελάχιστος πληθυσμός περιοχής</label>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                        <div  class="zombieHolder margin-bottom">
+                                                                                                                            <div class="input-holder">
+                                                                                                                                <input type="number" class="" id="minPopulation" name="minPopulation" value=""/>
+                                                                                                                            </div>
+                                                                                                                            <div id= "nearBySelection" class="border-bottom padding-bottom-large margin-bottom">
+                                                                                                                                <div id="nearbyAreas" class="margin-top hide-phone">
+                                                                                                                                    <p class="text small ">Οι περιοχές που πληρούν την προϋπόθεση είναι <a href="https://www.spitogatos.gr/#" class="sgTooltipBottomExternal text color cyan" id="nearbySiblings">οι εξής</a></p>
+                                                                                                                                    <div id="nearbySiblings_tooltip" class="hidden">
+                                                                                                                                        <div id="nearbySiblingsCont" class="nearbySiblings">
+                                                                                                                                            <a href="https://www.spitogatos.gr/search/results/commercial/rent/r100/m2004m">Ακαδημία</a><br /><a href="https://www.spitogatos.gr/search/results/commercial/rent/r100/m2034m">Ομόνοια</a><br /><a href="https://www.spitogatos.gr/search/results/commercial/rent/r100/m2042m">Πλατεία Βάθης</a><br /><a href="https://www.spitogatos.gr/search/results/commercial/rent/r100/m2044m">Πλατεία Κάνιγγος</a><br /><a href="https://www.spitogatos.gr/search/results/commercial/rent/r100/m2045m">Πλατεία Κλαυθμώνος</a><br /><a href="https://www.spitogatos.gr/search/results/commercial/rent/r100/m2056m">Ψυρρή</a><br /><a href="https://www.spitogatos.gr/search/results/commercial/rent/r100/m6113m">Πλατεία Κουμουνδούρου</a><br /><a href="https://www.spitogatos.gr/search/results/commercial/rent/r100/m6114m">Πλατεία Καρύτση</a><br /><a href="https://www.spitogatos.gr/search/results/commercial/rent/r100/m6115m">Παλιά Βουλή</a><br /><a href="https://www.spitogatos.gr/search/results/commercial/rent/r100/m6125m">Ζάππειο</a>        </div>
+                                                                                                                                        </div>
+                                                                                                                                        <div id="nearbyChildren_tooltip" class="hidden">
+                                                                                                                                            <div id="nearbyChildrenCont" class="nearbyChildren">
+                                                                                                                                            </div>
+                                                                                                                                        </div>
+                                                                                                                                        </div><!-- nearbyAreas -->              </div>
+
+                                                                                                                        </div>
+                                                                                                                        <div class="distance-from margin-bottom">
+                                                                                                                            <div class="text left ">
+                                                                                                                                <p>
+                                                                                                                                    <label class="text bold">Θέλω το ακίνητό μου να απέχει μέχρι</label>
+                                                                                                                                    <input type="number" class="small-input" name="metersDistance" value="500"/> μ. από το <input type="text" class="small-input" name="distanceFrom" value="Σύνταγμα"/>
+                                                                                                                                </p>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                        <div class="close-to margin-bottom">
+                                                                                                                            <div class="text left ">
+                                                                                                                                <p>
+                                                                                                                                    <label class="text bold">Θέλω να υπάρχει κοντά</label> 
+                                                                                                                                </p>
+                                                                                                                                <ul class="floated_checkboxes clearfix categoryFilter" style="">
+                                                                                                                                    <li class="categoryFilter land other first">
+                                                                                                                                        <input type="checkbox" name="checkbox_furnished" id="checkbox_furnished">
+                                                                                                                                        <label for="checkbox_furnished">Πάρκινγκ</label>
+                                                                                                                                    </li>
+                                                                                                                                    <li class="categoryFilter land" style="">
+                                                                                                                                        <input type="checkbox" name="checkbox_garage" id="checkbox_garage">
+                                                                                                                                        <label for="checkbox_garage">Μετρό</label>
+                                                                                                                                    </li>
+                                                                                                                                    <li class="categoryFilter land other elasticFilter" style="">
+                                                                                                                                        <input type="checkbox" name="checkbox_storage" id="checkbox_storage">
+                                                                                                                                        <label for="checkbox_storage">Στάση Λεωφορείου</label>
+                                                                                                                                    </li>
+                                                                                                                                    <li class="categoryFilter land other elasticFilter">
+                                                                                                                                        <input type="checkbox" name="checkbox_balcony" id="checkbox_balcony">
+                                                                                                                                        <label for="checkbox_balcony">Νοσοκομείο</label>
+                                                                                                                                    </li>
+                                                                                                                                    <li class="categoryFilter land other elasticFilter" style="">
+                                                                                                                                        <input type="checkbox" name="checkbox_secure_door" id="checkbox_secure_door">
+                                                                                                                                        <label for="checkbox_secure_door">Πεζόδρομο</label>
+                                                                                                                                    </li>
+                                                                                                                                    <li class="categoryFilter land other elasticFilter" style="">
+                                                                                                                                        <input type="checkbox" name="checkbox_air_conditioning" id="checkbox_air_conditioning">
+                                                                                                                                        <label for="checkbox_air_conditioning">Αξιοθέατα</label>
+                                                                                                                                    </li>
+                                                                                                                                    <li class="categoryFilter land other elasticFilter" style="">
+                                                                                                                                        <input type="checkbox" name="checkbox_alarm" id="checkbox_alarm">
+                                                                                                                                        <label for="checkbox_alarm">Επιχειρήσεις εστίασης</label>
+                                                                                                                                    </li>
+                                                                                                                                    <li class="categoryFilter land other elasticFilter">
+                                                                                                                                        <input type="checkbox" name="checkbox_fireplace" id="checkbox_fireplace">
+                                                                                                                                        <label for="checkbox_fireplace">Ξενοδοχείο</label>
+                                                                                                                                    </li>
+                                                                                                                                </ul>
+                                                                                                                            </div>
+                                                                                                                        </div>
                                                                                                                     </div>
                                                                                                                 </div>
+                                                                                                                <div class="end-indicator"></div>
+                                                                                                                <!-- Τέλος στις Προσθήκες εργασίας -->
                                                                                                                 <div id="locationSelection" class="zombieHolder  margin-bottom padding-bottom border-bottom">
                                                                                                                     <div>
                                                                                                                         <label class="text bold block   margin-bottom-small">Σκοπός:</label>
