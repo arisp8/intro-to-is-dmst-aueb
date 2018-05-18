@@ -1,5 +1,0 @@
-var OA_output = new Array(); 
-OA_output['112'] = '';
-OA_output['112'] += "<"+"div id=\'beacon_4676e2ad0f\' style=\'position: absolute; left: 0px; top: 0px; visibility: hidden;\'><"+"img src=\'https://ads.spitogatos.gr/www/delivery/lg.php?bannerid=0&amp;campaignid=0&amp;zoneid=112&amp;loc=https%3A%2F%2Fwww.spitogatos.gr%2FmySpitogatos%23privateListings&amp;referer=https%3A%2F%2Fwww.spitogatos.gr%2Fpage%2FaddListing%2F&amp;cb=4676e2ad0f\' width=\'0\' height=\'0\' alt=\'\' style=\'width: 0px; height: 0px;\' /><"+"/div>\n";
-OA_output['132'] = '';
-OA_output['132'] += "Cool, cooler, Spitogatos.<"+"div id=\'beacon_b7c99413d3\' style=\'position: absolute; left: 0px; top: 0px; visibility: hidden;\'><"+"img src=\'https://ads.spitogatos.gr/www/delivery/lg.php?bannerid=706&amp;campaignid=361&amp;zoneid=132&amp;loc=https%3A%2F%2Fwww.spitogatos.gr%2FmySpitogatos%23privateListings&amp;referer=https%3A%2F%2Fwww.spitogatos.gr%2Fpage%2FaddListing%2F&amp;cb=b7c99413d3\' width=\'0\' height=\'0\' alt=\'\' style=\'width: 0px; height: 0px;\' /><"+"/div>\n";
